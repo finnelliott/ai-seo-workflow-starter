@@ -4,23 +4,32 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:test": "dotenv -e .env.local -- jest -i",
+    "prisma:generate": "dotenv -e .env.local -- npx prisma generate",
+    "prisma:studio": "dotenv -e .env.local -- npx prisma studio",
+    "prisma:dbpush": "dotenv -e .env.local -- npx prisma db push",
+    "prisma:build": "dotenv -e .env.local -- npx prisma generate && next build"
   },
   "dependencies": {
+    "@prisma/client": "^5.19.0",
+    "dotenv-cli": "^7.4.2",
+    "inngest": "^3.22.5",
+    "next": "14.2.6",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.6"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.6"
+    "eslint-config-next": "14.2.6",
+    "postcss": "^8",
+    "prisma": "^5.19.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
